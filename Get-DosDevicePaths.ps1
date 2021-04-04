@@ -12,18 +12,18 @@ Function Get-DosDevicePaths {
         Lists all DOS device paths for each volume
 
 	.OUTPUTS
-    e.g.
+        e.g.
 
-  	DevicePath              DriveLetter
-    ----------              -----------
-    \Device\HarddiskVolume3 C:         
-    \Device\HarddiskVolume5 D:         
+    	DevicePath              DriveLetter
+        ----------              -----------
+        \Device\HarddiskVolume3 C:         
+        \Device\HarddiskVolume5 D:         
 
 	.NOTES
 		https://morgantechspace.com/2014/11/Get-Volume-Path-from-Drive-Name-using-Powershell.html
 
-  .LINK
-    https://morgantechspace.com/2014/11/Get-Volume-Path-from-Drive-Name-using-Powershell.html
+    .LINK
+        https://morgantechspace.com/2014/11/Get-Volume-Path-from-Drive-Name-using-Powershell.html
 
 	#>
 
