@@ -1,7 +1,7 @@
 Partition 5 + 6 are `/bootbank` and `/altbootbank` respectively:
 
 ```bash
-[root@AW-DL3-02:~] partedUtil getptbl /dev/disks/mpx.vmhba32:C0:T0:L0
+[root@HOST:~] partedUtil getptbl /dev/disks/mpx.vmhba32:C0:T0:L0
 gpt
 968 255 63 15564800
 1 64 8191 C12A7328F81F11D2BA4B00A0C93EC93B systemPartition 128
@@ -14,16 +14,24 @@ gpt
 
 Create a new VFAT filesystem on the 6th partition:
 
-[root@AW-DL3-02:~] vmkfstools -C vfat /dev/disks/
+```bash
+[root@HOST:~] vmkfstools -C vfat /dev/disks/
+```
 
-Symlink to /altbootbank
+Symlink to `/altbootbank`
 
-[root@AW-DL3-02:~] ln –s /vmfs/volumes/<volumeGUID> /altbootbank
+```bash
+[root@HOST:~] ln –s /vmfs/volumes/<volumeGUID> /altbootbank
+```
 
-Copy contents of /bootbank to /altbootbank (optional)
+Copy contents of `/bootbank` to `/altbootbank` (optional)
 
-[root@AW-DL3-02:~] cp -r /bootbank/* /altbootbank
+```bash
+[root@HOST:~] cp -r /bootbank/* /altbootbank
+```
 
 And save:
 
-[root@AW-DL3-02:~] /sbin/auto-backup.sh
+```bash
+[root@HOST:~] /sbin/auto-backup.sh
+```
