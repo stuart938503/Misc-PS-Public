@@ -3,8 +3,7 @@ function Update-PSProfile {
 
     try {
         $ProfileResponse = Invoke-RestMethod $Url -ErrorAction Stop
-        $ProfileContent = $ProfileResponse.Files."profile.ps1".Content
-        Set-Content -Path $profile -Value $ProfileContent
+        Set-Content -Path $profile -Value $ProfileResponse
         Write-Verbose "Updated PS profile" -Verbose
         . $profile
     }
