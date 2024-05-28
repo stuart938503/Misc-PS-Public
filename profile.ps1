@@ -1,3 +1,4 @@
+# Updates profile by downloading again from github
 function Update-PSProfile {
     $Url = "https://raw.githubusercontent.com/stuart938503/Misc-PS-Public/main/profile.ps1"
 
@@ -13,6 +14,7 @@ function Update-PSProfile {
     }
 }
 
+# Adds a collection of Graph API permissions to a managed identity in a given tenant
 function Add-GraphPermissionsToManagedIdentity()
 {
     param(
@@ -45,3 +47,24 @@ function Get-PublicIp {
     (Invoke-WebRequest -Uri "https://api.ipify.org").content
     (Invoke-WebRequest -Uri "https://api64.ipify.org").content
 }
+
+
+# Simple function to start a new elevated process. If arguments are supplied then 
+# a single command is started with admin rights; if not then a new admin instance
+# of PowerShell is started.
+function admin
+{
+    if ($args.Count -gt 0)
+    {   
+       $argList = "& '" + $args + "'"
+       Start-Process "$psHome\powershell.exe" -Verb runAs -ArgumentList $argList
+    }
+    else
+    {
+       Start-Process "$psHome\powershell.exe" -Verb runAs
+    }
+}
+
+
+# Set UNIX-like aliases for the admin command, so sudo <command> will run the command with elevated rights. 
+Set-Alias -Name su -Value admin
