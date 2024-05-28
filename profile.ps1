@@ -1,5 +1,5 @@
 function Update-PSProfile {
-    $Url = "https://api.github.com/gists/a208d2bd924691bae7ec7904cab0bd8e"
+    $Url = "https://raw.githubusercontent.com/stuart938503/Misc-PS-Public/main/profile.ps1"
 
     try {
         $gist = Invoke-RestMethod $gistUrl -ErrorAction Stop
