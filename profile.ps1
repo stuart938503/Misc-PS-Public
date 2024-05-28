@@ -10,5 +10,6 @@ function Update-PSProfile {
     }
     catch {
         Write-Verbose -Verbose "Was not able to access gist, try again next time"
+        Write-Debug $_
     }
 }
