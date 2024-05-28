@@ -69,7 +69,8 @@ function admin
 Function Tail-WinEventLog {
     Param(
         [hashtable]$FilterHashTable,
-        [string[]]$Properties
+        [string[]]$Properties,
+        [switch]$FormatAsList
     )
 
     #Add a StartTime if not passed in
@@ -91,7 +92,11 @@ Function Tail-WinEventLog {
             $LastTimeCreated = $Events[0].TimeCreated
             $LastRecordId = $Events[0].RecordId
 
-            $Events | Select-Object -Property $Properties | Format-Table -AutoSize
+            if($FormatAsList) {
+                $Events | Select-Object -Property $Properties | Format-List
+            } else {
+                $Events | Select-Object -Property $Properties | Format-Table -AutoSize
+            }
         }
 
         Start-Sleep -Seconds 1
