@@ -8,7 +8,7 @@ function Update-PSProfile {
         . $profile
     }
     catch {
-        Write-Verbose -Verbose "Was not able to access gist, try again next time"
+        Write-Verbose -Verbose "Was not able to update, try again next time"
         Write-Debug $_
     }
 }
