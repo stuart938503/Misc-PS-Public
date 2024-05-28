@@ -42,6 +42,6 @@ function Add-GraphPermissionsToManagedIdentity()
 }
 
 function Get-PublicIp {
-    ((Invoke-WebRequest -Uri "https://api.ipify.org?format=json").content | ConvertFrom-Json).ip
-    ((Invoke-WebRequest -Uri "https://api64.ipify.org?format=json").content | ConvertFrom-Json).ip
+    (Invoke-WebRequest -Uri "https://api.ipify.org").content
+    (Invoke-WebRequest -Uri "https://api64.ipify.org").content
 }
