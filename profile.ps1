@@ -267,5 +267,15 @@ function Clear-TeamsCache {
     }
 }
 
+Function Get-TenantIdFromSubscriptionID(){
+    Param(
+        [string]$SubscriptionId
+    )
+    
+    $response = try {(Invoke-WebRequest -UseBasicParsing -Uri "https://management.azure.com/subscriptions/$($SubscriptionId)?api-version=2015-01-01" -ErrorAction Stop).BaseResponse} catch { $_.Exception.Response } 
+    $stringHeader = $response.Headers.ToString()
+    return($stringHeader.SubString($stringHeader.IndexOf("login.windows.net")+18,36))
+}
+
 # Set UNIX-like aliases for the admin command, so sudo <command> will run the command with elevated rights. 
 Set-Alias -Name su -Value admin
